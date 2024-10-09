@@ -24,6 +24,7 @@ import { reactive, computed } from "vue";
 import useHeaderStore from "../store/useHeaderStore";
 let headerStore = useHeaderStore();
 
+
 // console.log($router);
 
 // vuex

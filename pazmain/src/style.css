@@ -28,7 +28,7 @@ body {
   background-color: #f1f4f6;
 }
 #app{
-  height: 100px;
+  height: 100%;
 }
 ol, ul {
 	list-style: none;

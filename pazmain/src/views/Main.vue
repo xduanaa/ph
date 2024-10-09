@@ -21,6 +21,9 @@ import navHeader from "@/components/navHeader.vue";
     height: 100%;
     .el-container {
         height: 100%;
+        // .el-main {
+        //     min-height: 400px;
+        // }
     }
 }
 </style>

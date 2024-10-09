@@ -18,6 +18,12 @@ const useHeaderStore = defineStore("isCollapse", {
                 this.selectMenu.push(payload);
             }
         },
+        closeTag(payload) {
+            const index = this.selectMenu.findIndex(
+                (item) => item.name === payload.name
+            );
+            this.selectMenu.splice(index, 1);
+        },
     },
     getters: {},
 });

@@ -92,6 +92,7 @@ const routes = [
         path: "/login",
         component: () => import("@/views/login/index.vue"),
     },
+    { path: "/cs", component: () => import("../views/cs/index.vue") },
 ];
 
 export const router = createRouter({

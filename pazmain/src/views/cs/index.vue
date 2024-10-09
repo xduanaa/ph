@@ -119,7 +119,6 @@ const resetForm = (formEl: FormInstance | undefined) => {
     height: 100%;
     .card-header {
         background-color: #899fe8;
-
         img {
             width: 430px;
         }

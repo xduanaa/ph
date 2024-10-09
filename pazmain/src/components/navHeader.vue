@@ -20,7 +20,12 @@
                     >
                         {{ item.name }}
                     </router-link>
-                    <el-icon class="close" size="12"><Close /></el-icon>
+                    <el-icon
+                        class="close"
+                        size="12"
+                        @click="closeTag(item, index)"
+                        ><Close
+                    /></el-icon>
                 </li>
             </ul>
         </div>
@@ -48,15 +53,41 @@
 <script setup>
 import {} from "module";
 import useHeaderStore from "../store/useHeaderStore";
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 // vuex
 // import { useStore } from "vuex";
 // const $store = useStore();
+const $router = useRouter();
 const $route = useRoute();
 let headerStore = useHeaderStore();
-console.log(headerStore);
+// console.log(headerStore);
 const changer = () => {
     headerStore.isCollapse = !headerStore.isCollapse;
+};
+const closeTag = (item, index) => {
+    headerStore.closeTag(item);
+    // console.log($route.path, "router");
+    // console.log(item.path, "item");
+    // console.log(index, "index");
+    // console.log(headerStore.selectMenu.length, "headerStore.selectMenu.length");
+    if ($route.path !== item.path) {
+        return;
+    }
+    if (index === headerStore.selectMenu.length) {
+        if (headerStore.selectMenu.length === 0) {
+            $router.push({
+                path: "/",
+            });
+        } else {
+            $router.push({
+                path: headerStore.selectMenu[index - 1].path,
+            });
+        }
+    } else {
+        $router.push({
+            path: headerStore.selectMenu[index].path,
+        });
+    }
 };
 </script>
 <style lang="less" scoped>
