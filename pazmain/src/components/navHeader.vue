@@ -30,7 +30,7 @@
             </ul>
         </div>
         <div class="heraer-right">
-            <el-dropdown>
+            <el-dropdown @command="handleClick">
                 <div class="el-dropdown-link flex-box">
                     <el-avatar
                         src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
@@ -39,7 +39,7 @@
                 </div>
                 <template #dropdown>
                     <el-dropdown-menu>
-                        <el-dropdown-item>Action 1</el-dropdown-item>
+                        <el-dropdown-item command="a">退出</el-dropdown-item>
                         <el-dropdown-item>Action 2</el-dropdown-item>
                         <el-dropdown-item>Action 3</el-dropdown-item>
                         <el-dropdown-item disabled>Action 4</el-dropdown-item>
@@ -87,6 +87,14 @@ const closeTag = (item, index) => {
         $router.push({
             path: headerStore.selectMenu[index].path,
         });
+    }
+};
+const handleClick = (command) => {
+    if (command === "a") {
+        localStorage.removeItem("pz-token");
+        localStorage.removeItem("pz-userinfo");
+
+        window.location.href = window.location.origin;
     }
 };
 </script>

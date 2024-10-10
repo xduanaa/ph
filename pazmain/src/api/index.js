@@ -10,6 +10,7 @@ const API = {
     GETMENULIST: "/menu/list",
     GETSELECTLIST: "/menu/selectlist",
     GETUSERUPDATE: "/update/user",
+    GETMENUPERMISSIONS: "/menu/permissions",
 };
 
 export const reqGetCode = (data) => request.post(API.GETCODE, data);
@@ -21,3 +22,4 @@ export const reqSetMenu = (data) => request.post(API.GETSETMENU, data);
 export const reqMenuList = (params) => request.get(API.GETMENULIST, { params });
 export const reqSelectList = () => request.get(API.GETSELECTLIST);
 export const reqUserUpdate = (data) => request.post(API.GETUSERUPDATE, data);
+export const reqMenuPressions = () => request.get(API.GETMENUPERMISSIONS);

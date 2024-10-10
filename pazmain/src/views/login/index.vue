@@ -64,12 +64,19 @@
 </template>
 
 <script setup>
-import { ref, reactive, watch } from "vue";
+import { ref, reactive, watch, toRaw } from "vue";
 import { ElMessage } from "element-plus";
 import { useRouter } from "vue-router";
-import { reqGetCode, reqUseCode, reqUserLogin } from "../../api";
+import useRouterStore from "../../store/useRouterStore";
+import {
+    reqGetCode,
+    reqUseCode,
+    reqUserLogin,
+    reqMenuPressions,
+} from "../../api";
 const imgUrl = new URL("../..//../public/Capture001.png", import.meta.url).href;
 const $router = useRouter();
+const $store = useRouterStore();
 const fromType = ref(1);
 const handleChange = () => {
     if (fromType.value === 1) {
@@ -152,6 +159,7 @@ const rules = reactive({
 });
 
 const ruleFormRef = ref();
+// const routerList = ref($store.routerList);
 const submitForm = async (ruleFormRef) => {
     if (!ruleFormRef) return;
     console.log(ruleFormRef);
@@ -173,13 +181,22 @@ const submitForm = async (ruleFormRef) => {
                 reqUserLogin(loginFrom).then(({ data }) => {
                     if ((data.code = 10000)) {
                         alert("登陆成功");
-                        console.log(data, data.data.token);
+                        // console.log(data, data.data.token);
                         localStorage.setItem("pz-token", data.data.token);
                         localStorage.setItem(
                             "pz-userInfo",
                             JSON.stringify(data.data.userInfo)
                         );
-                        $router.push("/");
+                        reqMenuPressions().then(({ data }) => {
+                            $store.dynamicMenu(data.data);
+                            console.log($store.routerList);
+                            $store.routerList.forEach((item) => {
+                                console.log(item);
+                                $router.addRoute("main", item);
+                                console.log($router);
+                            });
+                            $router.push("/");
+                        });
                     }
                 });
             }

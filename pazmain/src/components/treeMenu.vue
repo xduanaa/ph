@@ -52,6 +52,8 @@ import useHeaderStore from "@/store/useHeaderStore";
 const $router = useRouter();
 const headerStore = useHeaderStore();
 const props = defineProps(["meunData", "index"]);
+// console.log(props.meunData);
+
 const handleCick = (item, active) => {
     headerStore.addMenu(item.meta);
     $router.push(item.meta.path);

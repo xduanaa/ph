@@ -19,11 +19,13 @@
 
 <script setup>
 import TreeMenu from "@/components/treeMenu.vue";
+// import { useRouter } from "vue-router";
+import { reactive } from "vue";
 import { useRouter } from "vue-router";
-import { reactive, computed } from "vue";
 import useHeaderStore from "../store/useHeaderStore";
+import useRouterStore from "../store/useRouterStore";
 let headerStore = useHeaderStore();
-
+let routerStore = useRouterStore();
 
 // console.log($router);
 
@@ -33,8 +35,12 @@ let headerStore = useHeaderStore();
 // const isCollapse = computed(() => {
 //     $store.state.menu.isCollapse;
 // });
-const $router = useRouter();
-const meunData = reactive($router.options.routes[0].children);
+// const $router = useRouter();
+// const meunData = reactive($router.options.routes[0].children);
+// console.log(meunData);
+// console.log(routerStore.routerList);
+
+const meunData = reactive(routerStore.routerList);
 const handleOpen = () => {};
 const handleClose = () => {};
 </script>
