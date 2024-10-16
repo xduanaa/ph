@@ -1,5 +1,5 @@
 <template>
-    <pane-head />
+    <pane-head :route="$route" />
     <div class="btns">
         <el-button plain type="primary" size="small" @click="open(null)">
             新增
@@ -24,9 +24,6 @@
             v-model:current-page="paginationData.pageNum"
             v-model:page-size="paginationData.pageSize"
             :page-sizes="[10, 20, 30, 40]"
-            :size="size"
-            :disabled="disabled"
-            :background="background"
             layout="prev, pager, next,sizes,->,total, jumper"
             :total="400"
             @size-change="handleSizeChange"
@@ -77,6 +74,8 @@
 <script setup>
 import { ref, reactive, onMounted, nextTick } from "vue";
 import { reqMenu, reqSetMenu, reqMenuList } from "@/api/index";
+import { useRoute } from "vue-router";
+const $route=useRoute()
 onMounted(() => {
     getMenu();
     getMenuList();

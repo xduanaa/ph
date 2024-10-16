@@ -56,6 +56,7 @@ const props = defineProps(["meunData", "index"]);
 
 const handleCick = (item, active) => {
     headerStore.addMenu(item.meta);
+    headerStore.updateMenuActive(active);
     $router.push(item.meta.path);
 };
 // console.log(props);

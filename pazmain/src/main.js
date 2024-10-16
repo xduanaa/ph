@@ -30,7 +30,7 @@ const routerStore = useRouterStore();
 const localData = JSON.parse(localStorage.getItem("useRouterStore"));
 if (localData) {
     routerStore.dynamicMenu(localData.routerList);
-    console.log(routerStore.routerList);
+    // console.log(routerStore.routerList);
     routerStore.routerList.forEach((item) => {
         router.addRoute("main", item);
     });

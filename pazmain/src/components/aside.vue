@@ -4,7 +4,7 @@
         active-text-color="#ffd04b"
         background-color="#545c64"
         class="aside-container"
-        default-active="2"
+        :default-active="active"
         text-color="#fff"
         @open="handleOpen"
         @close="handleClose"
@@ -20,14 +20,12 @@
 <script setup>
 import TreeMenu from "@/components/treeMenu.vue";
 // import { useRouter } from "vue-router";
-import { reactive } from "vue";
-import { useRouter } from "vue-router";
+import { reactive, ref } from "vue";
+// import { useRouter } from "vue-router";
 import useHeaderStore from "../store/useHeaderStore";
 import useRouterStore from "../store/useRouterStore";
 let headerStore = useHeaderStore();
 let routerStore = useRouterStore();
-
-// console.log($router);
 
 // vuex
 // import { useStore } from "vuex";
@@ -37,9 +35,7 @@ let routerStore = useRouterStore();
 // });
 // const $router = useRouter();
 // const meunData = reactive($router.options.routes[0].children);
-// console.log(meunData);
-// console.log(routerStore.routerList);
-
+const active = ref(headerStore.menuActive);
 const meunData = reactive(routerStore.routerList);
 const handleOpen = () => {};
 const handleClose = () => {};

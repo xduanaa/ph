@@ -8,7 +8,7 @@ const useRouterStore = defineStore("useRouterStore", {
         dynamicMenu(payload) {
             const modules = import.meta.glob("../views/**/**/*.vue");
             // console.log(modules);
-            console.log(payload, 111);
+            // console.log(payload, 111);
 
             function routerSet(router) {
                 router.forEach((route) => {

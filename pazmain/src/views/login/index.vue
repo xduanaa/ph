@@ -219,7 +219,7 @@ const submitForm = async (ruleFormRef) => {
 watch(
     () => fromType.value,
     () => {
-        console.log("我变了");
+        // console.log("我变了");
         loginFrom.userName = "";
         loginFrom.passWord = "";
         loginFrom.validCode = "";

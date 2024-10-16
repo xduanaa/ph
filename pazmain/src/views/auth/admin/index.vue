@@ -1,5 +1,5 @@
 <template>
-    <pane-head />
+    <pane-head :route="$route" />
     <el-table :data="tableData.list.list" style="width: 100%">
         <el-table-column prop="id" label="id" width="180" />
         <el-table-column prop="name" label="昵称" width="180" />
@@ -94,6 +94,8 @@
 import { reactive, onMounted, ref } from "vue";
 import { reqAdmin, reqSelectList, reqUserUpdate } from "@/api/index";
 import dayjs from "dayjs";
+import { useRoute } from "vue-router";
+const $route = useRoute();
 const paginationData = reactive({
     pageNum: 1,
     pageSize: 10,

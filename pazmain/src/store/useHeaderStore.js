@@ -6,6 +6,7 @@ const useHeaderStore = defineStore("isCollapse", {
         return {
             isCollapse: false,
             selectMenu: [],
+            menuActive: "1-1",
         };
     },
     actions: {
@@ -23,6 +24,9 @@ const useHeaderStore = defineStore("isCollapse", {
                 (item) => item.name === payload.name
             );
             this.selectMenu.splice(index, 1);
+        },
+        updateMenuActive(val) {
+            this.menuActive = val;
         },
     },
     getters: {},

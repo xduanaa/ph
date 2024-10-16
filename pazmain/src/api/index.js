@@ -11,6 +11,10 @@ const API = {
     GETSELECTLIST: "/menu/selectlist",
     GETUSERUPDATE: "/update/user",
     GETMENUPERMISSIONS: "/menu/permissions",
+    GETPHOTOLIST: "/photo/list",
+    GETCOMPANION: "/companion",
+    GETCOMLIST: "/companion/list",
+    GETDELTE: "/delete/companion",
 };
 
 export const reqGetCode = (data) => request.post(API.GETCODE, data);
@@ -23,3 +27,7 @@ export const reqMenuList = (params) => request.get(API.GETMENULIST, { params });
 export const reqSelectList = () => request.get(API.GETSELECTLIST);
 export const reqUserUpdate = (data) => request.post(API.GETUSERUPDATE, data);
 export const reqMenuPressions = () => request.get(API.GETMENUPERMISSIONS);
+export const reqPhotoList = () => request.get(API.GETPHOTOLIST);
+export const reqCompanion = (data) => request.post(API.GETCOMPANION, data);
+export const reqComList = (params) => request.get(API.GETCOMLIST, { params });
+export const reqDelete = (data) => request.post(API.GETDELTE, data);

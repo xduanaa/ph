@@ -32,10 +32,8 @@
         <div class="heraer-right">
             <el-dropdown @command="handleClick">
                 <div class="el-dropdown-link flex-box">
-                    <el-avatar
-                        src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-                    />
-                    <p class="user-name">admin</p>
+                    <el-avatar :src="userInfo.avatar" />
+                    <p class="user-name">{{ userInfo.name }}</p>
                 </div>
                 <template #dropdown>
                     <el-dropdown-menu>
@@ -64,6 +62,7 @@ let headerStore = useHeaderStore();
 const changer = () => {
     headerStore.isCollapse = !headerStore.isCollapse;
 };
+const userInfo = JSON.parse(localStorage.getItem("pz-userInfo"));
 const closeTag = (item, index) => {
     headerStore.closeTag(item);
     // console.log($route.path, "router");
@@ -93,7 +92,7 @@ const handleClick = (command) => {
     if (command === "a") {
         localStorage.removeItem("pz-token");
         localStorage.removeItem("pz-userinfo");
-
+        localStorage.removeItem("useRouterStore");
         window.location.href = window.location.origin;
     }
 };

@@ -35,6 +35,7 @@ request.interceptors.response.use(
         if (response.data.code === -2) {
             localStorage.removeItem("pz-token");
             localStorage.removeItem("x-token");
+            localStorage.removeItem("useRouterStore");
             window.location.href == window.location.origin;
         }
         return response;

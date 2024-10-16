@@ -4,11 +4,22 @@ import Admin from "@/views/auth/admin//index.vue";
 import Group from "@/views/auth/group/index.vue";
 import Staff from "@/views/vppz/staff/index.vue";
 import Order from "@/views/vppz/order/index.vue";
+
 const routes = [
     {
         path: "/",
         component: () => import("../views/Main.vue"),
         name: "main",
+        redirect: (to) => {
+            const location = localStorage.getItem("useRouterStore");
+            if (location) {
+                const { routerList } = JSON.parse(location);
+                const child = routerList[0].children;
+                return child ? child[0].meta.path : routerList[0].meta.path;
+            } else {
+                return "/";
+            }
+        },
         // children: [
         //     //控制台路由
         //     {
