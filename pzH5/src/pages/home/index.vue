@@ -72,7 +72,7 @@ const getHindex = async () => {
     // console.log(result);
     if ((result.data.code = 10000)) {
         Object.assign(form, result.data.data);
-        console.log(form);
+        // console.log(form);
     }
 };
 const goOrderTwo = (index) => {
