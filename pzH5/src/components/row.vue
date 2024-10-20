@@ -41,12 +41,12 @@ const styleColor = reactive({
     已完成: "#21c521",
     已取消: "orange",
 });
-// watch(
-//     () => props.orderList,
-//     (newVal) => {
-//         console.log("Updated orderList:", newVal);
-//     }
-// );
+watch(
+    () => props.orderList,
+    (newVal) => {
+        console.log("Updated orderList:", newVal);
+    }
+);
 console.log(props.orderList);
 </script>
 
